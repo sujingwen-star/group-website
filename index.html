@@ -24,6 +24,10 @@
       <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
       <!-- partner js-->
       <link href="http://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+      <!-- 甘特图样式 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.css">
+    <!-- 甘特图库 -->
+    <script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.umd.js"></script>
    </head>
    <body>
       <div class="header-w3layouts">
@@ -450,6 +454,11 @@
          </div>
       </div>
       <!--//newsletter -->
+      <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+    <h2 style="text-align:center;">Project Gantt Chart</h2>
+    <svg id="gantt"></svg>
+</div>
+      <!--//newsletter -->
       <div class="price-table" id="price">
          <div class="container">
             <h3 class="title">深度合作</h3>
@@ -640,5 +649,95 @@
       <!-- bootstrap-->
       <script src="js/bootstrap.js"></script>
       <!--// bootstrap-->
+
+      <script>
+    const tasks = [
+        {
+            id: '1',
+            name: '需求分析',
+            start: '2026-04-01',
+            end: '2026-04-05',
+            progress: 100
+        },
+        {
+            id: '2',
+            name: '页面设计',
+            start: '2026-04-06',
+            end: '2026-04-12',
+            progress: 80,
+            dependencies: '1'
+        },
+        {
+            id: '3',
+            name: '前端开发',
+            start: '2026-04-13',
+            end: '2026-04-22',
+            progress: 50,
+            dependencies: '2'
+        },
+        {
+            id: '4',
+            name: '测试与发布',
+            start: '2026-04-23',
+            end: '2026-04-28',
+            progress: 20,
+            dependencies: '3'
+        }
+    ];
+
+    const gantt = new Gantt("#gantt", tasks, {
+        view_mode: "Day",
+        date_format: "YYYY-MM-DD"
+    });
+</script>
+      
+          <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+        <h2 style="text-align:center;">Project Gantt Chart</h2>
+        <svg id="gantt"></svg>
+    </div>
+
+    <script>
+        const tasks = [
+            {
+                id: '1',
+                name: '需求分析',
+                start: '2026-04-01',
+                end: '2026-04-05',
+                progress: 100
+            },
+            {
+                id: '2',
+                name: '页面设计',
+                start: '2026-04-06',
+                end: '2026-04-12',
+                progress: 80,
+                dependencies: '1'
+            },
+            {
+                id: '3',
+                name: '前端开发',
+                start: '2026-04-13',
+                end: '2026-04-22',
+                progress: 50,
+                dependencies: '2'
+            },
+            {
+                id: '4',
+                name: '测试与发布',
+                start: '2026-04-23',
+                end: '2026-04-28',
+                progress: 20,
+                dependencies: '3'
+            }
+        ];
+
+        const gantt = new Gantt("#gantt", tasks, {
+            view_mode: "Day",
+            date_format: "YYYY-MM-DD"
+        });
+    </script>
+
+</body>
+</html>
    </body>
 </html>
