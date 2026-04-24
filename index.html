@@ -28,6 +28,86 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.css">
     <!-- 甘特图库 -->
     <script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.umd.js"></script>
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.css">
+      <script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.umd.js"></script>
+      <style>
+    .gantt-section {
+        padding: 70px 0 80px;
+        background: #f7f7f7;
+    }
+
+    .gantt-title {
+        text-align: center;
+        font-size: 42px;
+        font-weight: 300;
+        letter-spacing: 4px;
+        color: #222;
+        margin-bottom: 15px;
+    }
+
+    .gantt-subtitle {
+        text-align: center;
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+    .gantt-box {
+        width: 86%;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 26px 28px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        border-top: 6px solid #14a6c8;
+        overflow-x: auto;
+    }
+
+    #gantt {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .gantt-container {
+        font-family: "Microsoft YaHei", Arial, sans-serif;
+        border-radius: 0;
+    }
+
+    .gantt .bar {
+        fill: #14a6c8;
+    }
+
+    .gantt .bar-progress {
+        fill: #f5b400;
+    }
+
+    .gantt .bar-label {
+        fill: #222;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .gantt .grid-header {
+        fill: #fff;
+    }
+
+    .gantt .today-highlight {
+        fill: #14a6c8;
+        opacity: 0.12;
+    }
+
+    @media (max-width: 768px) {
+        .gantt-title {
+            font-size: 30px;
+        }
+
+        .gantt-box {
+            width: 94%;
+            padding: 18px 14px;
+        }
+    }
+</style>
    </head>
    <body>
       <div class="header-w3layouts">
@@ -454,10 +534,14 @@
          </div>
       </div>
       <!--//newsletter -->
-      <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
-    <h2 style="text-align:center;">Project Gantt Chart</h2>
-    <svg id="gantt"></svg>
-</div>
+    <section class="gantt-section">
+    <h2 class="gantt-title">技术路线甘特图</h2>
+    <p class="gantt-subtitle">Technology roadmap and project schedule</p>
+
+    <div class="gantt-box">
+        <svg id="gantt"></svg>
+    </div>
+</section>
       <!--//newsletter -->
       <div class="price-table" id="price">
          <div class="container">
@@ -649,93 +733,81 @@
       <!-- bootstrap-->
       <script src="js/bootstrap.js"></script>
       <!--// bootstrap-->
-
-      <script>
+<script>
     const tasks = [
         {
             id: '1',
-            name: '需求分析',
-            start: '2026-04-01',
-            end: '2026-04-05',
+            name: '测量技术',
+            start: '2026-04-10',
+            end: '2026-04-15',
             progress: 100
         },
         {
             id: '2',
-            name: '页面设计',
-            start: '2026-04-06',
-            end: '2026-04-12',
+            name: '数据采集与处理',
+            start: '2026-04-16',
+            end: '2026-04-22',
             progress: 80,
             dependencies: '1'
         },
         {
             id: '3',
-            name: '前端开发',
-            start: '2026-04-13',
-            end: '2026-04-22',
-            progress: 50,
+            name: '设备结构与传感器设计',
+            start: '2026-04-23',
+            end: '2026-04-30',
+            progress: 65,
             dependencies: '2'
         },
         {
             id: '4',
-            name: '测试与发布',
-            start: '2026-04-23',
-            end: '2026-04-28',
-            progress: 20,
+            name: '机理建模分析',
+            start: '2026-05-01',
+            end: '2026-05-08',
+            progress: 45,
             dependencies: '3'
+        },
+        {
+            id: '5',
+            name: '实验验证',
+            start: '2026-05-09',
+            end: '2026-05-16',
+            progress: 30,
+            dependencies: '4'
+        },
+        {
+            id: '6',
+            name: 'AI算法分析',
+            start: '2026-05-17',
+            end: '2026-05-25',
+            progress: 20,
+            dependencies: '5'
+        },
+        {
+            id: '7',
+            name: '系统优化与报告',
+            start: '2026-05-26',
+            end: '2026-06-05',
+            progress: 10,
+            dependencies: '6'
         }
     ];
 
     const gantt = new Gantt("#gantt", tasks, {
-        view_mode: "Day",
-        date_format: "YYYY-MM-DD"
+        view_mode: "Week",
+        date_format: "YYYY-MM-DD",
+        container_height: 320,
+        column_width: 55,
+        bar_height: 24,
+        padding: 20,
+        readonly: true,
+        language: "zh",
+        scroll_to: "start",
+        today_button: true,
+        view_mode_select: true
     });
 </script>
-      
-          <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
-        <h2 style="text-align:center;">Project Gantt Chart</h2>
-        <svg id="gantt"></svg>
-    </div>
-
-    <script>
-        const tasks = [
-            {
-                id: '1',
-                name: '需求分析',
-                start: '2026-04-01',
-                end: '2026-04-05',
-                progress: 100
-            },
-            {
-                id: '2',
-                name: '页面设计',
-                start: '2026-04-06',
-                end: '2026-04-12',
-                progress: 80,
-                dependencies: '1'
-            },
-            {
-                id: '3',
-                name: '前端开发',
-                start: '2026-04-13',
-                end: '2026-04-22',
-                progress: 50,
-                dependencies: '2'
-            },
-            {
-                id: '4',
-                name: '测试与发布',
-                start: '2026-04-23',
-                end: '2026-04-28',
-                progress: 20,
-                dependencies: '3'
-            }
-        ];
-
-        const gantt = new Gantt("#gantt", tasks, {
-            view_mode: "Day",
-            date_format: "YYYY-MM-DD"
-        });
-    </script>
+     
+        
 
 </body>
 </html>
