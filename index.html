@@ -821,7 +821,88 @@
         view_mode_select: true
     });
 </script>
-     
+ <script>
+var projectKanban = new jKanban({
+    element: "#projectKanban",
+    gutter: "18px",
+    widthBoard: "320px",
+    dragItems: true,
+    boards: [
+        {
+            id: "todo",
+            title: "待开始",
+            class: "kanban-todo",
+            item: [
+                {
+                    id: "task1",
+                    title: "整理 WPS 项目文档"
+                },
+                {
+                    id: "task2",
+                    title: "完善实验方案文档"
+                },
+                {
+                    id: "task3",
+                    title: "补充设备结构设计说明"
+                }
+            ]
+        },
+        {
+            id: "doing",
+            title: "进行中",
+            class: "kanban-doing",
+            item: [
+                {
+                    id: "task4",
+                    title: "技术路线甘特图优化"
+                },
+                {
+                    id: "task5",
+                    title: "AI 算法分析模块设计"
+                }
+            ]
+        },
+        {
+            id: "review",
+            title: "待检查",
+            class: "kanban-review",
+            item: [
+                {
+                    id: "task6",
+                    title: "检查液位测量数据"
+                },
+                {
+                    id: "task7",
+                    title: "审核项目阶段报告"
+                }
+            ]
+        },
+        {
+            id: "done",
+            title: "已完成",
+            class: "kanban-done",
+            item: [
+                {
+                    id: "task8",
+                    title: "网页首页设计"
+                },
+                {
+                    id: "task9",
+                    title: "技术体系模块搭建"
+                }
+            ]
+        }
+    ],
+
+    click: function(el) {
+        alert("任务：" + el.innerText);
+    },
+
+    dropEl: function(el, target, source, sibling) {
+        console.log("任务已移动：", el.innerText);
+    }
+});
+</script>    
         
 
 </body>
