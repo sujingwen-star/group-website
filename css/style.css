@@ -6,7 +6,84 @@ body {
     letter-spacing: 1px;
     font-family: 'Poppins', sans-serif;
 }
+.kanban-section {
+    padding: 75px 6% 90px;
+    background: #ffffff;
+    text-align: center;
+}
 
+.kanban-title {
+    font-size: 42px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: #222;
+    margin-bottom: 12px;
+}
+
+.kanban-subtitle {
+    font-size: 17px;
+    color: #555;
+    margin-bottom: 38px;
+}
+
+.kanban-box {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 28px 24px;
+    background: #fff;
+    border-top: 6px solid #14a6c8;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    overflow-x: auto;
+}
+
+/* jKanban 外层 */
+#projectKanban {
+    min-height: 420px;
+}
+
+/* 每一列看板 */
+.kanban-board {
+    background: #f7f7f7 !important;
+    border-radius: 0 !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+/* 看板标题 */
+.kanban-board-header {
+    background: #14a6c8 !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    padding: 14px 16px !important;
+}
+
+/* 任务卡片 */
+.kanban-item {
+    background: #fff !important;
+    color: #222 !important;
+    font-size: 15px !important;
+    line-height: 1.6;
+    padding: 14px 16px !important;
+    border-left: 5px solid #f5b400;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* 任务卡片悬停 */
+.kanban-item:hover {
+    transform: translateY(-3px);
+    transition: 0.3s;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .kanban-title {
+        font-size: 30px;
+    }
+
+    .kanban-box {
+        padding: 20px 12px;
+    }
+}
 body a {
     outline: none;
     transition: 0.5s all;
